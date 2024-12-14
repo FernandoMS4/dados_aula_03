@@ -75,11 +75,31 @@
 # Uma transação é considerada suspeita se o valor for superior a R$ 10.000 ou se ocorrer fora do horário comercial (antes das 9h ou depois das 18h). 
 # Dada uma transação como transacao = {'valor': 12000, 'hora': 20}, verifique se ela é suspeita.
 
-data = {"user":{"id":1,"nome":"Fernando Martins","valor_transacao":7000,"hora":13},"user2":{"id":2,"nome":"Felipe Martins","valor_transacao":29000,"hora":13}}
-sus = {}
+# data = {"user":{"id":1,"nome":"Fernando Martins","valor_transacao":7000,"hora":13},"user2":{"id":2,"nome":"Felipe Martins","valor_transacao":29000,"hora":13}}
+# sus = {}
+# try:
+#     for u in data:
+#         if data[u]["valor_transacao"] >= 10000 or data[u]["hora"]>=18 or data[u]["hora"]<=9:
+#             print(f"Valor Suspeito para o cliente: {data[u]["nome"]} no valor de: {data[u]["valor_transacao"]}")
+# except:
+#     pass
+
+#Treinamento pessoal: Em um site possuo um filtro que, dentro dele o usuário pode escolher variados tipos de filtros e dentro destes filtros possuem outros filtros 
+#ex: https://www.netimoveis.com/venda/minas-gerais/belo-horizonte/apartamento?tipo=apartamento&transacao=venda&localizacao=BR-MG-belo-horizonte---&quartos=4&pagina=1
+#montei uma estrutura similar aos filtros para pegar somente aqueles que o usuário supostamente marcou
+
+filtro_resultado = {"fernando":{"localizacao":"Belo Horizonte","tipo_do_imovel":"Apartamento","numero_de_quartos":{"1+":"","2+":"","3+":"3","4+":""},"valor":{"minimo":"265000","maximo":"300000"},"area":{"minimo":"24,00","maximo":"65,00"},"numero_vagas":{"1+":"1","2+":"","3+":"","4+":""}}}
+json = {}
 try:
-    for u in data:
-        if data[u]["valor_transacao"] >= 10000 or data[u]["hora"]>=18 or data[u]["hora"]<=9:
-            print(f"Valor Suspeito para o cliente: {data[u]["nome"]} no valor de: {data[u]["valor_transacao"]}")
+    for i in filtro_resultado:
+        for u in filtro_resultado[i]:
+            itens = filtro_resultado[i][u]
+            if type(itens) == dict:
+                iten2 = {chave: valor for chave, valor in itens.items() if valor}
+                print(iten2)
+                json[u] = iten2
+            else:
+                json[u] = itens
 except:
     pass
+print(json)
