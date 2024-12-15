@@ -88,18 +88,19 @@
 #ex: https://www.netimoveis.com/venda/minas-gerais/belo-horizonte/apartamento?tipo=apartamento&transacao=venda&localizacao=BR-MG-belo-horizonte---&quartos=4&pagina=1
 #montei uma estrutura similar aos filtros para pegar somente aqueles que o usuário supostamente marcou
 
-filtro_resultado = {"fernando":{"localizacao":"Belo Horizonte","tipo_do_imovel":"Apartamento","numero_de_quartos":{"1+":"","2+":"","3+":"3","4+":""},"valor":{"minimo":"265000","maximo":"300000"},"area":{"minimo":"24,00","maximo":"65,00"},"numero_vagas":{"1+":"1","2+":"","3+":"","4+":""}}}
-json = {}
-try:
-    for i in filtro_resultado:
-        for u in filtro_resultado[i]:
-            itens = filtro_resultado[i][u]
-            if type(itens) == dict:
-                iten2 = {chave: valor for chave, valor in itens.items() if valor}
-                print(iten2)
-                json[u] = iten2
-            else:
-                json[u] = itens
-except:
-    pass
-print(json)
+# filtro_resultado = {"fernando":{"localizacao":"Belo Horizonte","tipo_do_imovel":"Apartamento","numero_de_quartos":{"1+":"","2+":"","3+":"3","4+":""},"valor":{"minimo":"265000","maximo":"300000"},"area":{"minimo":"24,00","maximo":"65,00"},"numero_vagas":{"1+":"1","2+":"","3+":"","4+":""}}}
+# json = {}
+# try:
+#     for i in filtro_resultado:
+#         for u in filtro_resultado[i]:
+#             itens = filtro_resultado[i][u]
+#             if type(itens) == dict:
+#                 iten2 = {chave: valor for chave, valor in itens.items() if valor}
+#                 print(iten2)
+#                 json[u] = iten2
+#             else:
+#                 json[u] = itens
+# except:
+#     pass
+# print(json)
+
